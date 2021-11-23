@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "name": "Tech News App",
+  "author": "Athul S Prakash",
   "icons": [
     {
       "src": "favicon.ico",

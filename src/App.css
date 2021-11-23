@@ -1,0 +1,86 @@
+:root{
+  --bg: #FFFDFD;
+  --text: #070707;
+  --text-alt: #CBD2D0;
+  --primary: #5F00BA;
+  --secondary: #F0E100;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+button{
+  cursor: pointer;
+}
+.topnav {
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--bg);
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 1em var(--text-alt);
+}
+.topnav button {
+  color: var(--text);
+  text-align: center;
+  padding: 1.3em 1.5em;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.topnav button:hover {
+  background-color: var(--text-alt);
+}
+.topnav button.active {
+  background-color: var(--primary);
+  color: var(--bg);
+}
+.topnav .icon {
+  display: none;
+}
+.toggle-btn{
+  position: absolute;
+  width: 3.5em;
+  height: 2em;
+  padding: 0.25em;
+  border-radius: 2em;
+  display: flex;
+  align-items: center;
+  background: var(--text-alt);
+  cursor: pointer;
+  right: 1.5em;
+}
+.btn-ball{
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 2em;
+  background: var(--primary);
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fas{
+  color: var(--bg);
+}
+.toggle{
+  transition: 0.3s;
+  transform: translateX(1.5em);
+}
+.home{
+  padding: 1.5em;
+  padding-top: 5em;
+}
+@media screen and (max-width: 550px) {
+  
+}
