@@ -1,27 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
-require('dotenv').config()
+import Nav from './components/nav'
+import Home from './components/home'
 
 function App() {
 
-  const  base = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000/'
   const [darkMode, setDarkMode] = useState(false)
-  const [source, setSource] = useState('wired')
-  
-  useEffect(()=>{
-    fetch(base + source)
-    .then(res=>res.json())
-    .then(data=>console.log(data))
-    .catch(err=>console.log(err))
-  }, [source])
+  const root = document.querySelector(':root')
+  // eslint-disable-next-line
+  const [source, setSource]  = useState('home')
 
   function openNav(){
-    const nav = document.getElementById("myTopnav")
-    if (nav.className === "topnav") {
-      nav.className += " responsive"
-    }else{
-      nav.className = "topnav"
-    }
+    document.getElementById('myTopnav').classList.toggle('visible')
+    document.querySelector('.nav-close-helper').classList.toggle('visible')
+  }
+
+  //darkmode toggle----------------------------
+  function darkModeOn(){
+    root.style.setProperty('--bg', '#121212')
+    root.style.setProperty('--text', '#FFFDFD')
+    root.style.setProperty('--text-alt', '#1F1B24')
+  }
+  function darkModeOff(){
+    root.style.setProperty('--bg', '#FFFDFD')
+    root.style.setProperty('--text', '#070707')
+    root.style.setProperty('--text-alt', '#d6dddb')
   }
 
   useEffect(()=>{
@@ -33,33 +36,28 @@ function App() {
     }else{
       btnBall.classList.remove('toggle')
       btnInd.classList.replace('fa-moon','fa-sun')
-    } 
+    }
+    darkMode ? darkModeOn() : darkModeOff()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [darkMode])
 
   function toggleDarkMode(){
     setDarkMode(prevMode=> !prevMode)
   }
+  //---------------------------------------------
+
+  // function toggleNewsSection(){
+  //   document.querySelector('.news-section').classList.toggle('visible')
+  // }
+
+  // function openSPecificNews(prop){
+  //   setSource(prop)
+  // }
 
   return (
     <div className="App">
-      <nav className="topnav" id="myTopnav">
-        <button id="home" className="active">Home</button>
-        <button id="news">News</button>
-        <button id="contact">Contact</button>
-        <button id="about">About</button>
-        <div aria-label="dark mode switch" onClick={toggleDarkMode} className="toggle-btn">
-          <div className="btn-ball">
-            <i className="fas fa-sun"></i>
-          </div>
-        </div>
-        <button id="nav" className="icon" onClick={openNav}>
-          <i className="fa fa-bars"></i>
-        </button>
-      </nav>
-
-      <div className="home">
-        <h1>News</h1>
-      </div>
+      <Nav toggleMode={toggleDarkMode} navBar={openNav}/>
+      <Home section={source}/>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 :root{
   --bg: #FFFDFD;
   --text: #070707;
-  --text-alt: #CBD2D0;
+  --text-alt: #d6dddb;
   --primary: #5F00BA;
   --secondary: #F0E100;
 }
@@ -12,28 +12,45 @@
   font-family: 'Roboto', sans-serif;
 }
 body {
-  margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  background: var(--text-alt);
 }
 button{
   cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+}
+::-webkit-scrollbar{
+  height: 9px;
+  width: 10px;
+}
+::-webkit-scrollbar-track{
+  background: var(--text-alt);
+  padding: 0 1.5em;
+}
+::-webkit-scrollbar-thumb{
+  background: var(--primary);
+  border-radius: 2em;
+  border: 2px solid var(--text-alt);
+}
+::-webkit-scrollbar-thumb:hover{
+  background: var(--secondary);
 }
 .topnav {
-  position: fixed;
   width: 100%;
   overflow: hidden;
   background-color: var(--bg);
   display: flex;
   align-items: center;
-  box-shadow: 0 0 1em var(--text-alt);
+}
+.nav-close-helper{
+  visibility: hidden;
 }
 .topnav button {
   color: var(--text);
   text-align: center;
   padding: 1.3em 1.5em;
-  border: none;
-  outline: none;
-  background: none;
   font-size: 1em;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -41,12 +58,53 @@ button{
 .topnav button:hover {
   background-color: var(--text-alt);
 }
-.topnav button.active {
-  background-color: var(--primary);
-  color: var(--bg);
-}
 .topnav .icon {
   display: none;
+}
+.drop-down{
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  top: 14.297px;
+  left: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: var(--bg);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  visibility: hidden;
+}
+.news-section{
+  position: fixed;
+  left: 0;
+  top: 60.594px;
+  width: 100%;
+  background: var(--secondary);
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 1em;
+}
+.news-section button{
+  font-weight: 400;
+  padding: 0.5em;
+  color: #070707;
+}
+.news-section button:hover{
+  background: unset;
+}
+.bars{
+  width: 2em;
+  height: 0.35em;
+  border-radius: 2em;
+  background: var(--primary);
 }
 .toggle-btn{
   position: absolute;
@@ -59,6 +117,8 @@ button{
   background: var(--text-alt);
   cursor: pointer;
   right: 1.5em;
+  top: 14.297px;
+  z-index: 3;
 }
 .btn-ball{
   width: 1.5em;
@@ -73,14 +133,140 @@ button{
 .fas{
   color: var(--bg);
 }
+.btn-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg);
+  height: 75px;
+  padding: 0 1.5em;
+  visibility: hidden;
+}
 .toggle{
   transition: 0.3s;
   transform: translateX(1.5em);
 }
-.home{
-  padding: 1.5em;
-  padding-top: 5em;
+.home-section{
+  padding-top: 2.5em;
 }
+.news-source{
+  padding: 2.5em 0;
+}
+.news-list{
+  width: 100%;
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  gap: 0.65em;
+  padding: 0.65em 1.5em;
+  margin: 1em 0;
+  background: var(--text-alt);
+}
+.source-name{
+  color: var(--text);
+  padding-left: 1em;
+  padding-bottom: 1em;
+  letter-spacing: 0.05em;
+}
+.news-card{
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  background: var(--bg);
+  padding: 1em;
+  border-radius: 5px;
+}
+.news-img{
+  height: 150px;
+  width: auto;
+}
+.news-title{
+  color: var(--text);
+}
+.news-link{
+  align-self: flex-end;
+  text-decoration: none;
+  color: var(--primary);
+}
+.fa-arrow-right{
+  color: var(--text);
+}
+.visible{
+  visibility: visible;
+}
+
+/*------------------Responsive---------------------*/
 @media screen and (max-width: 550px) {
-  
+  .home-section{
+    padding: 0;
+  }
+  .topnav{
+    position: fixed;
+    left: 0;
+    top: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50%;
+    height: 100vh;
+    background: var(--primary);
+    padding-top: 1em;
+    gap: 1em;
+    z-index: 2;
+    transform: translateX(-100%);
+    transition: 0.35s;
+  }
+  .btn-container{
+    visibility: visible;
+  }
+  .nav-close-helper{
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100vh;
+    background: transparent;
+    z-index: 2;
+  }
+  .visible{
+    transition: 0.35s;
+    transform: unset;
+    visibility: visible;
+  }
+  .drop-down{
+    top: unset;
+    visibility: visible;
+  }
+  .toggle-btn{
+    top: 21.5px;
+  }
+  .topnav button{
+    width: 100%;
+    color: var(--bg);
+  }
+}
+@media screen and (max-width: 550px) and (orientation: portrait) {
+  ::-webkit-scrollbar{
+    display: none;
+  }
+}
+@media screen and (min-width:550px) {
+  .topnav{
+    position: fixed;
+    left: 0;
+    top: 0;
+  }
+  .topnav button.active {
+    background-color: var(--primary);
+    color: var(--bg);
+  }
+  #close{
+    visibility: hidden;
+  }
+  .toggle-btn{
+    position: fixed;
+  }
 }
