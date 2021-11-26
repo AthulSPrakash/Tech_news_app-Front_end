@@ -47,7 +47,7 @@ export default function Home(props){
             return(
                 <LazyLoad key={uniqid()} offset={500}>
                     <div className="news-card">
-                        <img className="news-img" src={item.img} alt="news" onError={(e)=>handleImage(e)}/>
+                        <img className="news-img" src={ item.img || 'https://picsum.photos/id/181/220/150' } alt="news" onError={handleImage}/>
                         <h3 className="news-title">{item.title}</h3>
                         <a className="news-link" href={item.link}>Go to article&nbsp;<i className="fas fa-arrow-right"></i></a>
                     </div>

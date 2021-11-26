@@ -19,7 +19,7 @@ function App() {
   function darkModeOn(){
     root.style.setProperty('--bg', '#121212')
     root.style.setProperty('--text', '#FFFDFD')
-    root.style.setProperty('--text-alt', '#1F1B24')
+    root.style.setProperty('--text-alt', '#1b1b24')
   }
   function darkModeOff(){
     root.style.setProperty('--bg', '#FFFDFD')
