@@ -42,14 +42,20 @@ export default function Home(props){
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
-    function render(prop){
-        const news = prop.map(item=>{
+    function render(newsSource){
+        const news = newsSource.map(item=>{
             return(
                 <LazyLoad key={uniqid()} offset={500}>
                     <div className="news-card">
-                        <img className="news-img" src={ item.img || 'https://picsum.photos/id/181/220/150' } alt="news" onError={handleImage}/>
+                        <img className="news-img" 
+                            src={ item.img || 'https://picsum.photos/id/181/220/150' } 
+                            alt="news" 
+                            onError={handleImage}
+                        />
                         <h3 className="news-title">{item.title}</h3>
-                        <a className="news-link" href={item.link}>Go to article&nbsp;<i className="fas fa-arrow-right"></i></a>
+                        <a className="news-link" href={item.link}>
+                            Go to article&nbsp;<i className="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </LazyLoad>
             )         

@@ -2,7 +2,7 @@
   --bg: #FFFDFD;
   --text: #070707;
   --text-alt: #d6dddb;
-  --primary: #3800ba;
+  --primary: #260cb6;
   --secondary: #F0E100;
 }
 *{
@@ -183,6 +183,7 @@ button{
 .news-img{
   height: 150px;
   width: auto;
+  max-width: 400px;
 }
 .news-title{
   color: var(--text);
@@ -218,6 +219,9 @@ button{
     z-index: 2;
     transform: translateX(-100%);
     transition: 0.35s;
+  }
+  .topnav button:hover, .topnav button:focus,.topnav button:active  {
+    background-color: var(--primary);
   }
   .btn-container{
     visibility: visible;

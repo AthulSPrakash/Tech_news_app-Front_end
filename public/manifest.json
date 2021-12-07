@@ -1,16 +1,12 @@
 {
   "name": "Tech News App",
-  "author": "Athul S Prakash",
+  "version": "1.0",
+  "description": "App for viewing tech related news",
   "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64",
-      "type": "image/x-icon"
-    },
     {
       "src": "icon.png",
       "type": "image/png",
-      "sizes": "256x256"
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",
