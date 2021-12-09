@@ -13,7 +13,7 @@
 }
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: var(--text-alt);
+  background: var(--bg);
 }
 button{
   cursor: pointer;
@@ -26,13 +26,13 @@ button{
   width: 10px;
 }
 ::-webkit-scrollbar-track{
-  background: var(--text-alt);
+  background: var(--bg);
   padding: 0 1.5em;
 }
 ::-webkit-scrollbar-thumb{
   background: var(--primary);
   border-radius: 2em;
-  border: 2px solid var(--text-alt);
+  border: 2px solid var(--bg);
 }
 ::-webkit-scrollbar-thumb:hover{
   background: var(--secondary);
@@ -64,7 +64,7 @@ button{
 .drop-down{
   position: absolute;
   width: 2em;
-  height: 2em;
+  height: 1.5em;
   top: 14.297px;
   left: 1.5em;
   display: flex;
@@ -102,7 +102,7 @@ button{
 }
 .bars{
   width: 2em;
-  height: 0.35em;
+  height: 0.25em;
   border-radius: 2em;
   background: var(--primary);
 }
@@ -140,7 +140,6 @@ button{
   background: var(--bg);
   height: 75px;
   padding: 0 1.5em;
-  visibility: hidden;
 }
 .toggle{
   transition: 0.3s;
@@ -149,24 +148,30 @@ button{
 .home-section{
   padding-top: 2.5em;
 }
+.hero{
+  border-radius: 2em;
+}
 .news-source{
-  padding: 2.5em 0;
+  padding: 2.5em 0 0 0;
+  border-radius: 2em;
 }
 .news-list{
   width: 100%;
   display: flex;
   overflow-y: hidden;
   overflow-x: scroll;
-  gap: 0.65em;
-  padding: 0.65em 1.5em;
+  gap: 1.5em;
+  padding: 1em 1.5em;
   margin: 1em 0;
-  background: var(--text-alt);
 }
 .source-name{
+  width: fit-content;
   color: var(--text);
   padding-left: 1em;
   padding-bottom: 1em;
   letter-spacing: 0.05em;
+  font-size: 1.75em;
+  cursor: pointer;
 }
 .news-card{
   flex-grow: 1;
@@ -177,18 +182,28 @@ button{
   justify-content: space-between;
   gap: 1em;
   background: var(--bg);
+  border-radius: 1.5em;
+  box-shadow: 0 0 0.5em 0.25em var(--text-alt);
   padding: 1em;
-  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
 }
 .news-img{
   height: 150px;
   width: auto;
   max-width: 400px;
+  border-radius: 1em;
 }
 .news-title{
   color: var(--text);
+  letter-spacing: 0.01em;
+  font-weight: 600;
+  font-size: 1.2em;
 }
 .news-link{
+  width: 100%;
+  text-align: center;
+  font-size: 1.2em;
   align-self: flex-end;
   text-decoration: none;
   color: var(--primary);
@@ -223,9 +238,6 @@ button{
   .topnav button:hover, .topnav button:focus,.topnav button:active  {
     background-color: var(--primary);
   }
-  .btn-container{
-    visibility: visible;
-  }
   .nav-close-helper{
     position: fixed;
     right: 0;
@@ -258,10 +270,15 @@ button{
   }
 }
 @media screen and (min-width:550px) {
-  .topnav{
-    position: fixed;
-    left: 0;
-    top: 0;
+  .news-source{
+    padding: 2.5em 0;
+  }
+  .source-name{
+    font-size: 2em;
+  }
+  .news-list{
+    gap: 2em;
+    padding: 1.2em 1.5em 1.75em 1.5em;
   }
   .topnav button.active {
     background-color: var(--primary);
@@ -270,7 +287,10 @@ button{
   #close{
     visibility: hidden;
   }
-  .toggle-btn{
-    position: fixed;
+  .btn-container{
+    display: none;
+  }
+  .fas:hover{
+    color: var(--primary);
   }
 }

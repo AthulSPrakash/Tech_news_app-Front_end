@@ -3,7 +3,7 @@ import LazyLoad from 'react-lazyload'
 import uniqid from 'uniqid'
 require('dotenv').config()
 
-export default function Home(props){
+export default function Home(){
     const  base = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000/'
 
     const [techCrunch, setTechCrunch] = useState([])
@@ -15,7 +15,6 @@ export default function Home(props){
     const [gizmodo, setGizmodo] = useState([])
     const [digitalTrends, setDigitalTrends] = useState([])
     const [techRadar, setTechRadar] = useState([])
-    const [gadgetReview, setGadgetReview] = useState([])
     const [nineTo5Mac, setNineTo5Mac] = useState([])
     const [androidAuthority, setAndroidAuthority] = useState([])
 
@@ -36,25 +35,24 @@ export default function Home(props){
         connect('nineto5mac',setNineTo5Mac)
         connect('digitaltrends',setDigitalTrends)
         connect('techradar',setTechRadar)
-        connect('gadgetreview',setGadgetReview)
         connect('gsmarena',setGsmArena)
         connect('androidauthority',setAndroidAuthority)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
-    function render(newsSource){
-        const news = newsSource.map(item=>{
+    function render(data){
+        const news = data.map(item=>{
             return(
                 <LazyLoad key={uniqid()} offset={500}>
-                    <div className="news-card">
-                        <img className="news-img" 
+                    <div className="news-card" onClick={()=>openArticle(item.link)}>
+                        <img 
+                            className="news-img" 
                             src={ item.img || 'https://picsum.photos/id/181/220/150' } 
                             alt="news" 
-                            onError={handleImage}
-                        />
-                        <h3 className="news-title">{item.title}</h3>
+                            onError={handleImage}/>
+                        <p className="news-title">{item.title}</p>
                         <a className="news-link" href={item.link}>
-                            Go to article&nbsp;<i className="fas fa-arrow-right"></i>
+                            <i className="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </LazyLoad>
@@ -62,7 +60,9 @@ export default function Home(props){
         })
         return news
     }
-    
+    function openArticle(url){
+        window.open(url, '_self')
+    }
     function handleImage(e){
         e.target.src = 'https://picsum.photos/id/181/220/150'
     }
@@ -85,10 +85,6 @@ export default function Home(props){
             content: render(ventureBeat)
         },
         {
-            name:'Gizmodo',
-            content: render(gizmodo)
-        },
-        {
             name:'engadget',
             content: render(engadget)
         },
@@ -109,18 +105,17 @@ export default function Home(props){
             content: render(gsmArena)
         },
         {
-            name:'Android Authority',
-            content: render(androidAuthority)
+            name:'Gizmodo',
+            content: render(gizmodo)
         },
         {
-            name:'Gadget Review',
-            content: render(gadgetReview)
+            name:'Android Authority',
+            content: render(androidAuthority)
         }
     ]
 
     return(
-        <>
-        {props.section==='home' && <div className="home-section">
+        <div className="home-section">
             {sources.map(item=>{
                 return(
                     <LazyLoad key={uniqid()} offset={200}>
@@ -134,7 +129,6 @@ export default function Home(props){
                     </LazyLoad>
                 )
             })}
-        </div>}
-        </>
+        </div>
     )
 }

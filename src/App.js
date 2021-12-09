@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <Nav navBar={openNav}/>
-      <Home section={source}/>
+      <Home/>
     </div>
   )
 }
