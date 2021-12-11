@@ -82,6 +82,10 @@
     transition: 0.3s;
     transform: translateX(1.5em);
 }
+.fa-arrow-left{
+    color: var(--primary);
+    font-size: 2.1em;
+}
 
   /*------------------Responsive---------------------*/
 @media screen and (max-width: 550px) {
@@ -127,6 +131,9 @@
     .topnav button{
         width: 100%;
         color: var(--bg);
+    }
+    #home{
+        display: none;
     }
 }
 @media screen and (min-width:550px) {

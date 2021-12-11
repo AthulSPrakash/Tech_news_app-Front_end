@@ -7,7 +7,7 @@ require('dotenv').config()
 function App() {
   const  base = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000/'
   const data = Fetch(base)
-  // console.log('app')
+
   return (
     <div className="App">
       <Main news={data}/>

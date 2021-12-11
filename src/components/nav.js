@@ -58,15 +58,22 @@ export default function Nav({page, backToHome, navBar}){
             <button id="contact">Contact</button>
             <button onClick={navBar} id="close">Close</button>
         </nav>
-
         <div onClick={navBar} className="nav-close-helper"></div>
-        <div className="btn-container">
-            <div className="drop-down" onClick={navBar}>
-                <div className="bars"></div>
-                <div className="bars"></div>
-                <div className="bars"></div>
+
+        {page ?
+            <div className="btn-container" onClick={backToHome}>
+                <i className="fas fa-arrow-left"></i>
+            </div>  
+        :
+            <div className="btn-container">
+                <div className="drop-down" onClick={navBar}>
+                    <div className="bars"></div>
+                    <div className="bars"></div>
+                    <div className="bars"></div>
+                </div>
             </div>
-        </div>
+        }
+        
         <div aria-label="dark mode switch" onClick={toggleDarkMode} className="toggle-btn">
             <div className="btn-ball">
             <i className="fas fa-sun"></i>
