@@ -1,0 +1,143 @@
+.topnav {
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--bg);
+    display: flex;
+    align-items: center;
+}
+.nav-close-helper{
+    visibility: hidden;
+}
+.topnav button {
+    color: var(--text);
+    text-align: center;
+    padding: 1.3em 1.5em;
+    font-size: 1em;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+.topnav button:hover {
+    background-color: var(--text-alt);
+}
+.topnav .icon {
+    display: none;
+}
+.drop-down{
+    position: absolute;
+    width: 2em;
+    height: 1.5em;
+    top: 14.297px;
+    left: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: var(--bg);
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    visibility: hidden;
+}
+.bars{
+    width: 2em;
+    height: 0.25em;
+    border-radius: 2em;
+    background: var(--primary);
+}
+.toggle-btn{
+    position: absolute;
+    width: 3.5em;
+    height: 2em;
+    padding: 0.25em;
+    border-radius: 2em;
+    display: flex;
+    align-items: center;
+    background: var(--text-alt);
+    cursor: pointer;
+    right: 1.5em;
+    top: 14.297px;
+    z-index: 3;
+}
+.btn-ball{
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 2em;
+    background: var(--primary);
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg);
+    height: 75px;
+    padding: 0 1.5em;
+}
+.toggle{
+    transition: 0.3s;
+    transform: translateX(1.5em);
+}
+
+  /*------------------Responsive---------------------*/
+@media screen and (max-width: 550px) {
+    .topnav{
+        position: fixed;
+        left: 0;
+        top: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 50%;
+        height: 100vh;
+        background: var(--primary);
+        padding-top: 1em;
+        gap: 1em;
+        z-index: 2;
+        transform: translateX(-100%);
+        transition: 0.35s;
+    }
+    .topnav button:hover, .topnav button:focus,.topnav button:active  {
+        background-color: var(--primary);
+    }
+    .nav-close-helper{
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 50%;
+        height: 100vh;
+        background: transparent;
+        z-index: 2;
+    }
+    .visible{
+        transition: 0.35s;
+        transform: unset;
+        visibility: visible;
+    }
+    .drop-down{
+        top: unset;
+        visibility: visible;
+    }
+    .toggle-btn{
+        top: 21.5px;
+    }
+    .topnav button{
+        width: 100%;
+        color: var(--bg);
+    }
+}
+@media screen and (min-width:550px) {
+    .topnav button.active {
+        background-color: var(--primary);
+        color: var(--bg);
+    }
+    #close{
+        visibility: hidden;
+    }
+    .btn-container{
+        display: none;
+    }
+}

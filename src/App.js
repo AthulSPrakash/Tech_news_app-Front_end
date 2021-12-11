@@ -1,22 +1,16 @@
-import React, { useState } from 'react'
-import './App.css'
-import Nav from './components/nav'
-import Home from './components/home'
+import React from 'react'
+import './styles/App.css'
+import Fetch from './components/fetch'
+import Main from './components/Main'
+require('dotenv').config()
 
 function App() {
-
-  // eslint-disable-next-line
-  const [source, setSource]  = useState('home')
-
-  function openNav(){
-    document.getElementById('myTopnav').classList.toggle('visible')
-    document.querySelector('.nav-close-helper').classList.toggle('visible')
-  }
-
+  const  base = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000/'
+  const data = Fetch(base)
+  // console.log('app')
   return (
     <div className="App">
-      <Nav navBar={openNav}/>
-      <Home/>
+      <Main news={data}/>
     </div>
   )
 }

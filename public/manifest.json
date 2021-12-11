@@ -1,6 +1,6 @@
 {
   "name": "Tech News",
-  "version": "1.0",
+  "version": "1.1",
   "description": "App for viewing tech related news",
   "icons": [
     {
@@ -11,6 +11,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#20379e",
+  "background_color": "#20379e"
 }

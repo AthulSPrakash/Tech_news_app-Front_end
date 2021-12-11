@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
+import '../styles/nav.css'
 
-export default function Nav(props){
+export default function Nav({page, backToHome, navBar}){
 
     const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem('night')) || false)
     localStorage.setItem('night', JSON.parse(darkMode))
@@ -20,17 +21,30 @@ export default function Nav(props){
 
     useEffect(()=>{
         const btnBall = document.querySelector('.btn-ball')
+        const logo = document.querySelector('.logo')
         const btnInd = document.querySelector('.fa-sun') || document.querySelector('.fa-moon')
         if(darkMode){
-        btnBall.classList.add('toggle')
-        btnInd.classList.replace('fa-sun','fa-moon')
+            btnBall.classList.add('toggle')
+            btnInd.classList.replace('fa-sun','fa-moon')
+            logo && logo.classList.add('invert')
         }else{
-        btnBall.classList.remove('toggle')
-        btnInd.classList.replace('fa-moon','fa-sun')
+            btnBall.classList.remove('toggle')
+            btnInd.classList.replace('fa-moon','fa-sun')
+            logo && logo.classList.remove('invert')
         }
         darkMode ? darkModeOn() : darkModeOff()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [darkMode])
+
+    useEffect(()=>{
+        const logo = document.querySelector('.logo')
+        if(darkMode){
+            logo && logo.classList.add('invert')
+        }else{
+            logo && logo.classList.remove('invert')
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[page])
 
     function toggleDarkMode(){
         setDarkMode(prevMode=> !prevMode)
@@ -40,14 +54,14 @@ export default function Nav(props){
     return(
         <>
         <nav className="topnav" id="myTopnav">
-            <button id="home" className="active">Home</button>
+            <button onClick={backToHome} id="home" className="active">Home</button>
             <button id="contact">Contact</button>
-            <button onClick={props.navBar} id="close">Close</button>
+            <button onClick={navBar} id="close">Close</button>
         </nav>
 
-        <div onClick={props.navBar} className="nav-close-helper"></div>
+        <div onClick={navBar} className="nav-close-helper"></div>
         <div className="btn-container">
-            <div className="drop-down" onClick={props.navBar}>
+            <div className="drop-down" onClick={navBar}>
                 <div className="bars"></div>
                 <div className="bars"></div>
                 <div className="bars"></div>
