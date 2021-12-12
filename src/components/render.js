@@ -1,7 +1,7 @@
 import LazyLoad from 'react-lazyload'
 import uniqid from 'uniqid'
 
-export default function Render(data){
+export default function Render(data,page){
 
     function openArticle(url){
         window.open(url, '_self')
@@ -20,9 +20,11 @@ export default function Render(data){
                         alt="news" 
                         onError={handleImage}/>
                     <p className="news-title">{item.title}</p>
-                    <a className="news-link" href={item.link}>
-                        <i className="fas fa-arrow-right"></i>
-                    </a>
+                    {page && 
+                        <a className="news-link" href={item.link}>
+                            <i className="fas fa-arrow-right"></i>
+                        </a>
+                    }
                 </div>
             </LazyLoad>
         )         

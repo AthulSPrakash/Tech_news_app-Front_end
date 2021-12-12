@@ -7,7 +7,7 @@ export default function Main({news}){
     const [page, setPage]  = useState({
         section: false,
         logo: '',
-        content: null
+        content: ''
     })
 
     function openPage(image,data){
@@ -40,9 +40,9 @@ export default function Main({news}){
         <>
             <Nav page={page.section} backToHome={backToHome} navBar={openNav}/>
             { page.section ? 
-                <IndvPage logo={page.logo} data={page.content}/>
+                <IndvPage page={page.section} logo={page.logo} data={news} array={page.content}/>
                 : 
-                <Home openPage={openPage} data={news}/>
+                <Home page={page.section} openPage={openPage} data={news}/>
             }
         </>
     )
