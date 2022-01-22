@@ -13,4 +13,4 @@ websites includes :
 - 9to5Mac
 - Android Authority
 - GSMArena
-Link: https://quicktechnews.netlify.app
+### Link: https://quicktechnews.netlify.app
