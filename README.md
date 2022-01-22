@@ -1,5 +1,5 @@
-# App to view latest tech-related news from top websites
-The data are fetched from the 'tech_news-API'. Conatins title of the news, cover image and link to the article/site. Build using React.js.
+# Tech News PWA - View latest tech-related news from top websites
+Progressive web app build using React.js. The data are fetched from the 'tech_news-API'. Contains title of the news, cover image and link to the article/site.
 websites includes : 
 - TechCrunch
 - Gizmodo
@@ -13,3 +13,4 @@ websites includes :
 - 9to5Mac
 - Android Authority
 - GSMArena
+Link: https://quicktechnews.netlify.app
